@@ -27,11 +27,10 @@ namespace DiceRoller
         /// <returns>Returns the new <see cref="FaceValue"/> </returns>
         public byte Roll()
         {
-            throw new NotImplementedException();
-            /*if (!IsHeld)
-            {
-                FaceValue = ;
-            }*/
+            Random random = new Random();
+            byte newValue = (byte)random.Next(1, 7);
+            FaceValue = newValue;
+            return newValue;
         }
     }
 }
