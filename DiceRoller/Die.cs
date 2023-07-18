@@ -12,9 +12,16 @@ namespace DiceRoller
     public class Die
     {
         /// <summary>
+        /// Sets the face value for the die on creation.
+        /// </summary>
+        public Die()
+        {
+            Roll();
+        }
+        /// <summary>
         /// The value of the die's current top side.
         /// </summary>
-        public byte FaceValue { get; set; }
+        public byte FaceValue { get; private set; }
 
         /// <summary>
         /// True it the die is held.
@@ -27,7 +34,7 @@ namespace DiceRoller
         /// <returns>Returns the new <see cref="FaceValue"/> </returns>
         public byte Roll()
         {
-            Random random = new Random();
+            Random random = new();
             byte newValue = (byte)random.Next(1, 7);
             FaceValue = newValue;
             return newValue;
