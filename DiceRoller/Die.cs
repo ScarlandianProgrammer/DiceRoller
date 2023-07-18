@@ -11,6 +11,13 @@ namespace DiceRoller
     /// </summary>
     public class Die
     {
+        private static Random _random;
+
+        static Die() 
+        { 
+            _random = new Random();
+        }
+
         /// <summary>
         /// Sets the face value for the die on creation.
         /// </summary>
@@ -35,10 +42,9 @@ namespace DiceRoller
         /// <returns>Returns the <see cref="FaceValue"/> of the die.</returns>
         public byte Roll()
         {
-            Random random = new();
             if (!IsHeld)
             {
-                byte newValue = (byte)random.Next(1, 7);
+                byte newValue = (byte)_random.Next(1, 7);
                 FaceValue = newValue;
             }
             return FaceValue;
