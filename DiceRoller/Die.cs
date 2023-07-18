@@ -30,14 +30,18 @@ namespace DiceRoller
 
         /// <summary>
         /// Rolls the die and sets the <see cref="FaceValue"> to the random number.
+        /// If the die is held, the <see cref="FaceValue"/> remains unchanged.
         /// </summary>
-        /// <returns>Returns the new <see cref="FaceValue"/> </returns>
+        /// <returns>Returns the <see cref="FaceValue"/> of the die.</returns>
         public byte Roll()
         {
             Random random = new();
-            byte newValue = (byte)random.Next(1, 7);
-            FaceValue = newValue;
-            return newValue;
+            if (!IsHeld)
+            {
+                byte newValue = (byte)random.Next(1, 7);
+                FaceValue = newValue;
+            }
+            return FaceValue;
         }
     }
 }
